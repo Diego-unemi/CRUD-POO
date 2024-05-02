@@ -90,8 +90,7 @@ class Sale(Icalculo):
 
     def getJson(self):
         # Método especial para representar la clase venta como diccionario
-        invoice= {"factura":self.invoice,"Fecha":self.date.strftime("%Y-%m-%d")
-,"cliente":self.client.fullName(),"subtotal":self.subtotal,"descuento": self.discount,"iva": self.iva,"total": self.total,"detalle":[]}
+        invoice= {"factura":self.invoice,"Fecha":self.date.strftime("%Y-%m-%d"),"cliente":self.client.fullName(),"subtotal":self.subtotal,"descuento": self.discount,"iva": self.iva,"total": self.total,"detalle":[]}
         for det in self.sale_detail:
             invoice["detalle"].append(
                 {"poducto":det.product.descrip,

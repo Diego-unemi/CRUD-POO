@@ -49,11 +49,20 @@ class Valida:
                 if valor > float(0):
                     break
             except:
-                print("          ------><  | {} ".format(mensajeError))
+                print("          ------>  | {} ".format(mensajeError))
         return valor
     
-    def cedula():
-        pass
+    def cedula(self,mensajeError,col,fil):
+        while True:
+            gotoxy(col,fil)
+            dni = input()
+            if len(str(dni)) == 10 and dni != '9999999999':
+                break
+            else:
+                gotoxy(col,fil);print(mensajeError)
+                time.sleep(1)
+                gotoxy(col,fil);print(" "*20)
+        return dni
     
 class otra:
     pass    
