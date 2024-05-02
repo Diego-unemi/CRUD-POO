@@ -1,6 +1,16 @@
 from utilities import borrarPantalla, gotoxy
 import time
 
+def validar_decimal(func):
+    def valida_cero(*args, **kwargs):
+        while True:
+            valor = func(*args, **kwargs)
+            if isinstance(valor, float) and valor > 0:
+                return valor
+            else:
+                print("          ------>  | El valor ingresado debe ser un número decimal mayor que cero.")
+    return valida_cero
+
 class Menu:
     def __init__(self,titulo="",opciones=[],col=6,fil=1):
         self.titulo=titulo
@@ -40,7 +50,8 @@ class Valida:
             else:
                 print("          ------><  | {} ".format(mensajeError))
         return valor
-
+    
+    @validar_decimal
     def solo_decimales(self,mensaje,mensajeError):
         while True:
             valor = str(input("          ------>   | {} ".format(mensaje)))
